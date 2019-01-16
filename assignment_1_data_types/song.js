@@ -4,8 +4,8 @@
  * from the album 'Let it Be'.
  */
 
-// name of the song
-function song() {
+(function song() {
+  // name of the song
   const song = "Two of Us";
   // name of the album where the song was initially released
   const album = "Let It Be";
@@ -24,8 +24,7 @@ function song() {
   // duration in seconds
   const length = 213;
   // the personnel which covers the song and their roles
-  const personnel = [
-    {
+  const personnel = [{
       name: "Paul McCartney",
       roles: ["lead vocal", "lead acoustic guitar"]
     },
@@ -43,14 +42,30 @@ function song() {
     }
   ];
   // song writers
-  const songwriters = ["Lennon", "McCartney"];
+  const writers = ["Lennon", "McCartney"];
   // song producer(s)
   const producers = ["Phil Spector"];
 
   /*
    * Meta-data output:
    */
-  console.log(song);
-}
-
-song();
+  console.group("'%s' from album '%s' by famous '%s':", song, album, band)
+  console.log('Song name:', song);
+  console.log('Album name:', album);
+  console.log('Band name:', band);
+  console.log('Single type of album:', single);
+  console.log('Source of data:', wiki.href);
+  console.log('Release date:', released.toDateString());
+  console.log('Recording date:', recorded.toDateString());
+  console.log('Song genre:', genre);
+  console.log('Song duration in seconds:', length);
+  console.group('Song personnel:')
+  // iterate all persons and log their names and roles
+  personnel.forEach((person) => {
+    console.log("%s, roles: %s", person.name, person.roles.join(', '))
+  });
+  console.groupEnd()
+  console.log('Song writers:', writers.join(', '));
+  console.log('Song producers:', producers.join(', '));
+  console.groupEnd()
+})();
